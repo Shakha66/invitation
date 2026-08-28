@@ -18,11 +18,11 @@ const CONFIG = {
     brand: "♡ invitation ♡",
     pinTitle: "сумма даты нашего\nрождения\ndd.mm + dd.mm",
     pinHint: "4 цифры",
-    pinWrong: "попробуй ещё раз 💗",
-    questionTitle: "ты пойдешь со мной\nна свидание?",
+    pinWrong: "попробуйте ещё раз 💗",
+    questionTitle: "вы пойдете со мной\nна свидание?",
     yesBtn: "Да",
-    noBtn: "Нет (не принимается :)",
-    noHint: "ну давай без этого 😌",
+    noBtn: "Нет (нет принимается:)",
+    noHint: "ну давайте без этого 😌",
     saidNoTitle: "все таки нажали на нет???",
     saidNoBody: "Я же знаю, что да 😒😒 один раз хотя бы нажали\nТАК ЧТО ВЫ СОГЛАСНЫ?",
     agreeBtn: "Конечно согласен, любимая моя.",
@@ -34,10 +34,10 @@ const CONFIG = {
     surpriseKicker: "СЮРПРИЗ",
     surpriseHint: "Может догадаетесь, не так уж\nи сложно",
     continueBtn: "Дальше ♡",
-    finaleTitle: "рада что ты не\nотказался.",
-    finaleBody: "Только бы сюрприз не\nоказался...",
+    finaleTitle: "рада что вы не\nотказались.",
+    finaleBody: "Только бы попробовали \nоказаться...",
     finaleReady: "Буду готова {date} в {time}!",
-    needDateTime: "выбери дату и время 💗"
+    needDateTime: "выберите дату и время 💗"
   }
 };
 
@@ -483,35 +483,6 @@ function resetInvitation() {
   showScreen("pin", false);
 }
 
-/* Music */
-function setupMusic() {
-  const audio = $("#bgMusic");
-  audio.src = CONFIG.musicSrc;
-  audio.addEventListener("canplay", () => {
-    musicReady = true;
-  });
-  audio.addEventListener("error", () => {
-    musicReady = false;
-  });
-}
-
-$("#btnMusic").addEventListener("click", async () => {
-  const audio = $("#bgMusic");
-  if (!musicOn) {
-    try {
-      await audio.play();
-      musicOn = true;
-      $("#btnMusic").textContent = "🔊";
-    } catch {
-      musicOn = false;
-      $("#btnMusic").textContent = "🔇";
-    }
-  } else {
-    audio.pause();
-    musicOn = false;
-    $("#btnMusic").textContent = "🔇";
-  }
-});
 
 document.body.addEventListener(
   "pointerdown",
