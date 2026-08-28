@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff8da1" />
+  <title>Приглашение</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bg-flowers" aria-hidden="true">
+      <span class="flower f1">✿</span>
+      <span class="flower f2">❀</span>
+      <span class="flower f3">✿</span>
+      <span class="flower f4">❀</span>
+      <span class="flower f5">♡</span>
+      <span class="flower f6">✿</span>
+    </div>
+
+    <p class="hint" data-config="hint"></p>
+
+    <div class="phone" id="phone">
+      <div class="notch" aria-hidden="true"></div>
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+          <span class="progress-heart" id="progressHeart">♥</span>
+        </div>
+      </div>
+
+      <div class="screens" id="screens">
+        <!-- SCREEN: PIN -->
+        <section class="screen is-active" data-screen="pin" id="screen-pin">
+          <h1 class="pin-title" data-config="pinTitle"></h1>
+          <p class="pin-hint" data-config="pinHint"></p>
+          <div class="digits" id="digits" aria-label="Код из 4 цифр">
+            <span class="digit" data-i="0"></span>
+            <span class="digit" data-i="1"></span>
+            <span class="digit" data-i="2"></span>
+            <span class="digit" data-i="3"></span>
+          </div>
+          <p class="pin-error" id="pinError" hidden></p>
+          <div class="keypad" id="keypad">
+            <button type="button" class="key" data-key="1">1</button>
+            <button type="button" class="key" data-key="2">2</button>
+            <button type="button" class="key" data-key="3">3</button>
+            <button type="button" class="key" data-key="4">4</button>
+            <button type="button" class="key" data-key="5">5</button>
+            <button type="button" class="key" data-key="6">6</button>
+            <button type="button" class="key" data-key="7">7</button>
+            <button type="button" class="key" data-key="8">8</button>
+            <button type="button" class="key" data-key="9">9</button>
+            <span class="key-spacer"></span>
+            <button type="button" class="key" data-key="0">0</button>
+            <button type="button" class="key key-back" data-key="back" aria-label="Удалить">⌫</button>
+          </div>
+        </section>
+
+        <!-- SCREEN: QUESTION -->
+        <section class="screen" data-screen="question" id="screen-question">
+          <article class="wavy-card">
+            <div class="art-frame">
+              <img src="assets/images/cats-kiss.svg" alt="" class="art-img" loading="lazy" />
+            </div>
+            <h2 class="card-title" data-config="questionTitle"></h2>
+            <div class="choice-row">
+              <button type="button" class="btn-yes" id="btnYes" data-config="yesBtn"></button>
+              <button type="button" class="btn-no" id="btnNo" data-config="noBtn"></button>
+            </div>
+            <p class="no-hint" id="noHint" hidden></p>
+          </article>
+        </section>
+
+        <!-- SCREEN: SAID NO -->
+        <section class="screen" data-screen="saidno" id="screen-saidno">
+          <article class="wavy-card">
+            <div class="art-frame">
+              <img src="assets/images/cats-play.svg" alt="" class="art-img" loading="lazy" />
+            </div>
+            <h2 class="card-title" data-config="saidNoTitle"></h2>
+            <p class="card-body" data-config="saidNoBody"></p>
+            <button type="button" class="btn-primary" id="btnAgree" data-config="agreeBtn"></button>
+          </article>
+        </section>
+
+        <!-- SCREEN: DATETIME -->
+        <section class="screen" data-screen="datetime" id="screen-datetime">
+          <article class="wavy-card">
+            <div class="art-frame">
+              <img src="assets/images/cats-kiss.svg" alt="" class="art-img" loading="lazy" />
+            </div>
+            <h2 class="card-title" data-config="whenTitle"></h2>
+            <div class="fields">
+              <button type="button" class="field" id="openCalendar">
+                <span class="field-label" data-config="dateLabel"></span>
+                <span class="field-value" id="dateValue"></span>
+              </button>
+              <button type="button" class="field" id="openTime">
+                <span class="field-label" data-config="timeLabel"></span>
+                <span class="field-value" id="timeValue"></span>
+              </button>
+            </div>
+            <button type="button" class="btn-primary" id="btnCantWait" data-config="cantWaitBtn"></button>
+          </article>
+        </section>
+
+        <!-- SCREEN: SURPRISE -->
+        <section class="screen" data-screen="surprise" id="screen-surprise">
+          <article class="wavy-card">
+            <h2 class="card-title" data-config="surpriseTitle"></h2>
+            <p class="surprise-kicker" data-config="surpriseKicker"></p>
+            <p class="card-body" data-config="surpriseHint"></p>
+            <div class="surprise-grid" id="surpriseGrid"></div>
+            <button type="button" class="btn-primary" id="btnSurpriseNext" disabled data-config="continueBtn"></button>
+          </article>
+        </section>
+
+        <!-- SCREEN: FINAL -->
+        <section class="screen" data-screen="finale" id="screen-finale">
+          <article class="wavy-card finale-card">
+            <div class="finale-emoji" id="finaleArt">
+              <img src="assets/images/finale.svg" alt="" class="finale-img" />
+            </div>
+            <h2 class="card-title" id="finaleTitle"></h2>
+            <p class="card-body" id="finaleBody"></p>
+            <p class="finale-ready" id="finaleReady"></p>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="icon-btn" id="btnBack" aria-label="Назад" title="Назад">‹</button>
+      <button type="button" class="icon-btn" id="btnEdit" aria-label="Изменить" title="Изменить">✎</button>
+      <button type="button" class="icon-btn" id="btnReset" aria-label="Заново" title="Заново">↺</button>
+      <button type="button" class="icon-btn" id="btnMusic" aria-label="Музыка" title="Музыка">🔇</button>
+    </div>
+
+    <div class="brand-pill" data-config="brand"></div>
+  </div>
+
+  <!-- Calendar modal -->
+  <div class="overlay" id="calendarOverlay" hidden>
+    <div class="modal calendar-modal" role="dialog" aria-modal="true" aria-labelledby="calTitle">
+      <div class="cal-head">
+        <button type="button" class="icon-btn" id="calPrev" aria-label="Предыдущий месяц">‹</button>
+        <h3 id="calTitle"></h3>
+        <button type="button" class="icon-btn" id="calNext" aria-label="Следующий месяц">›</button>
+      </div>
+      <div class="cal-weekdays" id="calWeekdays"></div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="calReset">Reset</button>
+        <button type="button" class="btn-primary" id="calConfirm">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time modal -->
+  <div class="overlay" id="timeOverlay" hidden>
+    <div class="modal time-modal" role="dialog" aria-modal="true" aria-labelledby="timeTitle">
+      <h3 id="timeTitle">Время</h3>
+      <div class="time-pick">
+        <div class="wheel" id="hourWheel"></div>
+        <span class="time-colon">:</span>
+        <div class="wheel" id="minuteWheel"></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="timeCancel">Reset</button>
+        <button type="button" class="btn-primary" id="timeConfirm">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop preload="none"></audio>
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
